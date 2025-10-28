@@ -1,35 +1,196 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <title>若戸大橋の紹介</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>若戸大橋 | ミニ資料館とクイズ</title>
   <style>
+    :root {
+      --accent: #b22222; /* 橋の赤をイメージ */
+      --ink: #222;
+      --bg: #f7f7f7;
+      --card: #fff;
+    }
+    * { box-sizing: border-box; }
     body {
-      font-family: "Hiragino Sans", "Meiryo", sans-serif;
-      background-color: #f8f8f8;
-      margin: 40px;
-      line-height: 1.8;
+      margin: 0; padding: 24px;
+      font-family: system-ui, -apple-system, "Hiragino Sans", "Meiryo", sans-serif;
+      color: var(--ink); background: var(--bg); line-height: 1.7;
     }
-    h1 { color: #b22222; }
-    img {
-      max-width: 100%;
-      border-radius: 8px;
+    header, main, footer {
+      max-width: 980px; margin: 0 auto;
     }
-    .container {
-      background: white;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    header h1 { margin: 0 0 8px; color: var(--accent); }
+    header p { margin: 0 0 16px; color: #555; }
+    .card {
+      background: var(--card); border-radius: 14px; padding: 18px;
+      box-shadow: 0 8px 30px rgba(0,0,0,.06);
+      margin: 16px 0;
     }
+    .hero {
+      display: grid; gap: 16px; align-items: start;
+    }
+    @media (min-width: 800px) {
+      .hero { grid-template-columns: 1.2fr 1fr; }
+    }
+    .hero img {
+      width: 100%; height: auto; border-radius: 12px;
+    }
+    h2 { margin-top: 0; color: var(--accent); }
+    dl { display: grid; grid-template-columns: max-content 1fr; gap: 8px 16px; }
+    dt { font-weight: 700; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .quiz .q {
+      border: 1px solid #ddd; border-radius: 10px; padding: 14px; margin: 12px 0;
+    }
+    .quiz button {
+      border: none; padding: 10px 14px; border-radius: 10px; cursor: pointer;
+      background: var(--accent); color: white; font-weight: 700;
+    }
+    .quiz .choices label {
+      display: block; padding: 8px 10px; border-radius: 8px; cursor: pointer;
+    }
+    .quiz .choices label:hover { background: #f0e6e6; }
+    .muted { color: #666; font-size: .95em; }
+    .score { font-weight: 800; }
+    footer { margin: 24px auto; color: #666; font-size: .9em; text-align: center; }
   </style>
 </head>
 <body>
-  <div class="container">
+  <header>
     <h1>若戸大橋（わかとおおはし）</h1>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/8/8b/Wakato_Bridge.jpg" alt="若戸大橋">
-    <p>若戸大橋は、北九州市の若松区と戸畑区を結ぶ全長627mの吊り橋です。1962年に開通し、九州で最初の長大橋として知られています。赤い色が特徴で、夜には美しいライトアップが行われます。</p>
-    <p>現在は自動車専用道路として利用され、若戸トンネルとともに北九州の交通を支えています。</p>
-    <p><a href="https://ja.wikipedia.org/wiki/若戸大橋" target="_blank">Wikipediaで詳しく見る</a></p>
-  </div>
+    <p class="muted">北九州市の若松区と戸畑区を結ぶ赤い吊橋。概要・写真・クイズで学べるミニ資料館。</p>
+  </header>
+
+  <main>
+    <!-- 写真＋概要 -->
+    <section class="card hero">
+      <div>
+        <!-- ★ここをあなたの写真ファイル名に変更（例：assets/myphoto.jpg） -->
+        <img src="assets/wakato.jpg" alt="若戸大橋（北九州市 若松区—戸畑区）">
+        <p class="muted">画像：制作者提供（© あなたの名前）</p>
+      </div>
+      <div>
+        <h2>橋の概要</h2>
+        <p>
+          若戸大橋は、北九州市の若松区と戸畑区を跨ぐ吊橋で、赤色の外観が象徴的です。
+          1962年（昭和37年）に開通し、地域の交通を支えるランドマークとして親しまれています。
+        </p>
+        <dl>
+          <dt>橋種</dt><dd>吊橋（つりばし）</dd>
+          <dt>開通</dt><dd>1962年</dd>
+          <dt>位置</dt><dd>北九州市（若松区—戸畑区）</dd>
+          <dt>備考</dt><dd>夜間ライトアップ・周辺に展望スポット</dd>
+        </dl>
+        <p class="muted">※数値などの詳細は資料により表現が異なる場合があります。</p>
+      </div>
+    </section>
+
+    <!-- もっと知る（任意で地図やリンク） -->
+    <section class="card">
+      <h2>もっと知る</h2>
+      <ul>
+        <li><a href="https://ja.wikipedia.org/wiki/若戸大橋" target="_blank" rel="noopener">Wikipedia：若戸大橋</a></li>
+        <li><a href="https://www.city.kitakyushu.lg.jp/" target="_blank" rel="noopener">北九州市 公式サイト</a></li>
+      </ul>
+      <!-- Googleマップを入れたい場合は下のコメントを外して、地点を検索して埋め込みコードに差し替え -->
+      <!--
+      <div class="card" style="padding:0; overflow:hidden;">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=【ここにGoogleマップの埋め込みURL】"
+          width="100%" height="360" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+      </div>
+      -->
+    </section>
+
+    <!-- クイズ -->
+    <section class="card quiz" id="quiz">
+      <h2>クイズ：若戸大橋を学ぼう！</h2>
+      <p class="muted">各設問は1つだけ正解。最後に得点が表示されます。</p>
+
+      <div id="quiz-area"></div>
+      <button id="check">採点する</button>
+      <p id="result" class="muted" style="margin-top:12px;"></p>
+    </section>
+  </main>
+
+  <footer>
+    <p>© <span id="year"></span> あなたの名前 / このページは学習目的で作成されています。</p>
+  </footer>
+
+  <script>
+    // 年表示
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // ★クイズデータ（ここを書き換えるだけで問題が増減できます）
+    //   text: 質問文
+    //   choices: 選択肢配列
+    //   answer: 正解の選択肢インデックス（0始まり）
+    //   explain: 解説
+    const questions = [
+      {
+        text: "若戸大橋の橋種（形式）はどれ？",
+        choices: ["斜張橋", "吊橋", "アーチ橋", "トラス橋"],
+        answer: 1,
+        explain: "若戸大橋は主ケーブルとハンガーロープで桁を吊る“吊橋”です。"
+      },
+      {
+        text: "若戸大橋が開通したのはいつ？",
+        choices: ["1952年", "1962年", "1972年", "1982年"],
+        answer: 1,
+        explain: "1962年（昭和37年）開通とされています。"
+      },
+      {
+        text: "若戸大橋が結ぶ区の組合せは？",
+        choices: ["小倉北区—門司区", "八幡西区—若松区", "戸畑区—若松区", "小倉南区—戸畑区"],
+        answer: 2,
+        explain: "洞海湾を跨いで戸畑区と若松区を結びます。"
+      },
+      {
+        text: "若戸大橋の見た目の特徴として適切なのは？",
+        choices: ["白色の外観", "木製デッキ", "赤色の外観", "ガラス張りの主塔"],
+        answer: 2,
+        explain: "赤い外観が地域のシンボルとして有名です。"
+      }
+    ];
+
+    // レンダリング
+    const quizArea = document.getElementById('quiz-area');
+    questions.forEach((q, idx) => {
+      const wrap = document.createElement('div');
+      wrap.className = 'q';
+      const title = document.createElement('p');
+      title.innerHTML = `<strong>Q${idx + 1}.</strong> ${q.text}`;
+      const choices = document.createElement('div');
+      choices.className = 'choices';
+      q.choices.forEach((c, cidx) => {
+        const id = `q${idx}_c${cidx}`;
+        const label = document.createElement('label');
+        label.setAttribute('for', id);
+        label.innerHTML = `<input type="radio" name="q${idx}" id="${id}" value="${cidx}" style="margin-right:8px;"> ${c}`;
+        choices.appendChild(label);
+      });
+      wrap.appendChild(title);
+      wrap.appendChild(choices);
+      quizArea.appendChild(wrap);
+    });
+
+    // 採点
+    document.getElementById('check').addEventListener('click', () => {
+      let score = 0;
+      let feedback = [];
+      questions.forEach((q, idx) => {
+        const checked = document.querySelector(`input[name="q${idx}"]:checked`);
+        const val = checked ? Number(checked.value) : -1;
+        const ok = val === q.answer;
+        if (ok) score++;
+        feedback.push(`Q${idx + 1}: ${ok ? "◯ 正解" : "× 不正解"} — ${q.explain}`);
+      });
+      const result = document.getElementById('result');
+      result.innerHTML = `結果：<span class="score">${score}/${questions.length}</span><br>${feedback.join("<br>")}`;
+      result.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    });
+  </script>
 </body>
 </html>
